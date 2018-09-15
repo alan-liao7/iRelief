@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>iRelief</title>
+  <!-- <link rel="stylesheet" type="text/css" href="iRelief.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
+  
+  <style type="text/css">
+    
+    #butt{
+    background: url("/images/buttonBack.jpg") no-repeat center center fixed;
+    color: #585858;
+    border: 2px solid #ED6555;
+    font-family: Raleway;
+    border-radius: 12px; 
+    width: 75%;
+    height: 15%;
+    position: absolute;
+      top: 40%;
+      margin-left: 0;
+      box-shadow: 3px 3px;
+      font-size: 5REM;
+      letter-spacing: 50px;
+      font-weight: 600;
+    }
+
+    #butt:hover{
+      background: url("/images/buttonBackHover.jpg") no-repeat center center fixed;
+    }
+
+html{
+  background: url("/images/2652243.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.wrapper {
+      display: flex;
+  justify-content: center;
+}
+.fade-in-fwd {
+  -webkit-animation: fade-in-fwd 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+          animation: fade-in-fwd 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+@-webkit-keyframes fade-in-fwd {
+  0% {
+    -webkit-transform: translateZ(-80px);
+            transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+@keyframes fade-in-fwd {
+  0% {
+    -webkit-transform: translateZ(-80px);
+            transform: translateZ(-80px);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    opacity: 1;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <div>
+    <div><nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px;">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+        <li><a href="/search">Search</a></li>
+        <li><a href="/sos">SOS</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrapper" id="butt2">
+<button id="butt" class="fade-in-fwd">SOS</button>
+</div>
+
+<p id="demo">jk</p>
+
+</body>
+</html>
+<script src="/javascripts/iRelief.js"> </script>
