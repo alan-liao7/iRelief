@@ -5,6 +5,27 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 //var hbs = require('express-handlebars');
+var geocoder = require('geocoder');
+
+var options = {
+  provider: 'google',
+  // Optional depending on the providers
+  httpAdapter: 'https', // Default
+  apiKey: 'AIzaSyB-Sd_InBeYptAPAv2NZc4rVl8CcxHrNuA', // for Mapquest, OpenCage, Google Premier
+  formatter: null         // 'gpx', 'string', ...
+};
+
+var latitude = 39.32761461649892
+var longitude = -76.62223031968674
+geocoder.reverseGeocode(latitude, longitude, function ( err, data ) {
+
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(data);
+  }
+
+});
 
 var routes = require('./routes/index');
 
@@ -23,6 +44,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+
+app.post('/sos', function(req,res){
+	console.log('POST /sos');
+	console.log('Latitude: ' + req.body.latitude + '\nLongitude: ' + req.body.longitude);
+	res.set('Content-Type', 'text/plain');
+	res.send(`You sent: ${req.body.latitude} to Express`);
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
