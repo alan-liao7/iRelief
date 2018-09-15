@@ -15,18 +15,6 @@ var options = {
   formatter: null         // 'gpx', 'string', ...
 };
 
-var latitude = 39.32761461649892
-var longitude = -76.62223031968674
-geocoder.reverseGeocode(latitude, longitude, function ( err, data ) {
-
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(data);
-  }
-
-});
-
 var routes = require('./routes/index');
 
 var app = express();
@@ -47,11 +35,23 @@ app.use('/', routes);
 
 app.post('/sos', function(req,res){
 	console.log('POST /sos');
-	console.log('Latitude: ' + req.body.latitude + '\nLongitude: ' + req.body.longitude);
-	res.set('Content-Type', 'text/plain');
+	console.log(req.body);
+	//console.log('Latitude: ' + req.body.latitude + '\nLongitude: ' + req.body.longitude);
+	res.set('Content-Type', 'application/json');
 	res.send(`You sent: ${req.body.latitude} to Express`);
 });
 
+var latitude = 39.32761461649892
+var longitude = -76.62223031968674
+geocoder.reverseGeocode(latitude, longitude, function ( err, data ) {
+
+  if (err) {
+    console.log(err);
+  } else {
+    console.log(data);
+  }
+
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
