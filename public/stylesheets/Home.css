@@ -1,0 +1,52 @@
+.option{
+  width: 180px;
+  font-family: Raleway;
+}
+
+body{
+  background: url("/images/2652243.jpg") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.Heading{
+	border-bottom: 2px solid #d04032;
+
+	font-family: Raleway;
+	font-weight: 600;
+	text-align: center;
+	letter-spacing: 4px;
+	font-size: 6rem;
+	padding:2px;
+
+}
+
+.SubHeading{
+	font-family: Raleway;
+	font-weight: 600;
+	letter-spacing: 4px;
+	font-size: 4rem;
+	padding:2px;
+	border-bottom: 1px solid #d04032;
+	margin: 5% 10% 0 10%;
+
+}
+
+.content{
+	font-family: Raleway;
+	letter-spacing: 2px;
+	line-height: 2;
+	font-size: 2rem;
+	margin: 0 10% 0 10%;
+}
+
+.Thumbnail{
+	margin-top: 5%;
+	margin-right: 14%;
+	margin-left: 14%;
+	height: 5%;
+	width: 5%;
+	align: bottom;
+}

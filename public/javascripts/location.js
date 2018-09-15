@@ -8,8 +8,6 @@ const method = "POST";
     var delta;
     var button = document.getElementById("butt2");
 
-    //console.log("HTTP Request created");
-
     button.addEventListener("mousedown", function(){
         start = new Date();
     });
@@ -26,17 +24,15 @@ const method = "POST";
         
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(showPosition);
-
-        } else { 
-            x.innerHTML = "Geolocation is not supported by this browser.";
-        }
-
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+    
     });
 })(window, document);
 
 var x = document.getElementById("latitude");
 var y = document.getElementById("longitude");
-
 
 function showPosition(position) {
     //console.log("In showPosition: " + JSON.stringify(postData));

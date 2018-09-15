@@ -2,81 +2,27 @@
 <html>
 <head>
   <title>iRelief</title>
-  <!-- <link rel="stylesheet" type="text/css" href="iRelief.css"> -->
+<link rel="stylesheet" type="text/css" href="/stylesheets/iRelief.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,600" rel="stylesheet">
-  <style type="text/css">
-    
-    #butt{
-    background: url("/images/buttonBack.jpg") no-repeat center center fixed;
-    color: #585858;
-    border: 2px solid #ED6555;
-    font-family: Raleway;
-    border-radius: 12px; 
-    width: 75%;
-    height: 15%;
-    position: absolute;
-      top: 40%;
-      margin-left: 0;
-      box-shadow: 3px 3px;
-      font-size: 5REM;
-      letter-spacing: 50px;
-      font-weight: 600;
-    }
-
-    #butt:hover{
-      background: url("/images/buttonBackHover.jpg") no-repeat center center fixed;
-    }
-
-html{
-  background: url("/images/2652243.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
-
-.wrapper {
-      display: flex;
-  justify-content: center;
-}
-.fade-in-fwd {
-  -webkit-animation: fade-in-fwd 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-          animation: fade-in-fwd 2s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
-}
-@-webkit-keyframes fade-in-fwd {
-  0% {
-    -webkit-transform: translateZ(-80px);
-            transform: translateZ(-80px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    opacity: 1;
-  }
-}
-@keyframes fade-in-fwd {
-  0% {
-    -webkit-transform: translateZ(-80px);
-            transform: translateZ(-80px);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    opacity: 1;
-  }
-}
-
-</style>
 </head>
 <body>
+  <div><nav class="navbar navbar-inverse" role="navigation" style="padding-left:130px; background-color: #585858;">
+      <ul class="nav navbar-nav">
+        <li class="option"><a href="/">Home<span class="sr-only">(current)</span></a></li>
+        <li class="option"><a href="/search">Search</a></li>
+        <li class="active option"><a href="/sos">SOS</a></li>
+        <li class="option"><a href="/report">Report</a></li>
+      </ul>
+    </nav>
+  </div>
   <div class="wrapper" id="butt2">
-    <button id="butt" class="fade-in-fwd">SOS</button>
+    <button id="butt" class="fade-in-fwd" >SOS</button>
     <p id="latitude"></p>
     <p id="longitude"></p>
   </div>
+
 </body>
 </html>
-
-<script src="/javascripts/location.js"> </script>
+<script src="iRelief.js"> </script>
+<!-- <script type="text/javascript">countDown(5,"butt2")</script> -->

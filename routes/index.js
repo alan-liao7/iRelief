@@ -14,4 +14,8 @@ router.get('/sos',function(req, res, next){
 	res.render('sos');
 });
 
+router.get('/report',function(req, res, next){
+	res.render('report');
+});
+
 module.exports = router;
