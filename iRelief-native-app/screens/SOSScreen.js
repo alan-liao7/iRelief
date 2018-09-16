@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Button, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
+import { Text, View, StyleSheet, Button, TouchableOpacity, TouchableWithoutFeedback, Alert } from 'react-native';
 import { Constants,Font } from 'expo';
 
 // You can import from local files
@@ -16,10 +16,8 @@ export default class App extends React.Component {
       //timer: null,
         counter: '00',
         miliseconds: '00',
+        status: false
     }
-
-
-    
     constructor( props ) {
         super( props );
  
@@ -45,28 +43,46 @@ export default class App extends React.Component {
                 count = (Number(this.state.counter) + 1).toString();
                 num = '00';
             }
+
+            if( Number(this.state.counter) >= 1) {
+              self.setState({status: true});
+              console.log(this.state.status);
+            }
  
             self.setState({
                 counter: count.length == 1 ? '0'+count : count,
                 miliseconds: num.length == 1 ? '0'+num : num
             });
         }, 0);
-        console.log("Before setSTate: " + timer);
         //this.setState({timer : time});
         //console.log("After setSTate: " + timer);
     }
 
     onButtonStart() {
-        console.log("Button Pressed");
         this.start();
+        console.log("Button pressed");
         //this.setState({startDisabled: true, stopDisabled: false});
     }
  
     onButtonStop() {
-        console.log("Button Released");
-        console.log("Timer before clear: " + timer);
+        console.log("Button released");
         clearInterval(timer);
-        this.setState({counter: '00', miliseconds: '00'});
+        if( Number(this.state.counter) >= 1) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                console.log("Latitude: "+ position.coords.latitude + "; Longitude: " + position.coords.longitude);
+            });
+        }
+        Alert.alert(
+          'Success',
+          'You have notified the nearest first responder!',
+          [
+            //{text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+            //{text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+            {text: 'OK', onPress: () => console.log('OK Pressed')}
+          ],
+          { cancelable: false }
+        )
+        this.setState({counter: '00', miliseconds: '00', status: false});
         //this.setState({startDisabled: false, stopDisabled: true});
     }
 
@@ -78,39 +94,49 @@ export default class App extends React.Component {
     );
   }
 
+  _renderMsg(){
+    console.log(this.state.status);
+    return(
+      <View style={styles.container}>
+        <Text style={styles.msg}>{this.state.status ? ("Release the button to send your location!") : ""}</Text>
+      </View>
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
-          {this._renderTimer()}
-          <TouchableWithoutFeedback style={styles.btn_wrapper}
-            onPressIn={this.onButtonStart}
-            onPressOut={this.onButtonStop}>
-            <View style={styles.btn_1}>
-              <Text style={styles.btn_text}>Emergency Level 4</Text>
-            </View>
-          </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback style={styles.btn_wrapper}
-            onPressIn={this.onButtonStart}
-            onPressOut={this.onButtonStop}>
-            <View style={styles.btn_1}>
-              <Text style={styles.btn_text}>Emergency Level 3</Text>
-            </View>
-          </TouchableWithoutFeedback>
-                    <TouchableWithoutFeedback style={styles.btn_wrapper}
-            onPressIn={this.onButtonStart}
-            onPressOut={this.onButtonStop}>
-            <View style={styles.btn_1}>
-              <Text style={styles.btn_text}>Emergency Level 2</Text>
-            </View>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback style={styles.btn_wrapper}
-            onPressIn={this.onButtonStart}
-            onPressOut={this.onButtonStop}>
-            <View style={styles.btn_1}>
-              <Text style={styles.btn_text}>Emergency Level 1</Text>
-            </View>
-          </TouchableWithoutFeedback>
-      </View>
+            {this._renderTimer()}
+            {this._renderMsg()}
+            <TouchableWithoutFeedback style={styles.btn_wrapper}
+              onPressIn={this.onButtonStart}
+              onPressOut={this.onButtonStop}>
+              <View style={styles.btn_1}>
+                <Text style={styles.btn_text}>Emergency Level 4</Text>
+              </View>
+            </TouchableWithoutFeedback>
+                      <TouchableWithoutFeedback style={styles.btn_wrapper}
+              onPressIn={this.onButtonStart}
+              onPressOut={this.onButtonStop}>
+              <View style={styles.btn_1}>
+                <Text style={styles.btn_text}>Emergency Level 3</Text>
+              </View>
+            </TouchableWithoutFeedback>
+                      <TouchableWithoutFeedback style={styles.btn_wrapper}
+              onPressIn={this.onButtonStart}
+              onPressOut={this.onButtonStop}>
+              <View style={styles.btn_1}>
+                <Text style={styles.btn_text}>Emergency Level 2</Text>
+              </View>
+            </TouchableWithoutFeedback>
+            <TouchableWithoutFeedback style={styles.btn_wrapper}
+              onPressIn={this.onButtonStart}
+              onPressOut={this.onButtonStop}>
+              <View style={styles.btn_1}>
+                <Text style={styles.btn_text}>Emergency Level 1</Text>
+              </View>
+            </TouchableWithoutFeedback>
+        </View>
     );
   }
 }
@@ -125,6 +151,12 @@ const styles = StyleSheet.create({
   },
   btn_wrapper:{
     flex: 1,
+  },
+  msg:{
+    flex: 1,
+    fontsize: 45,
+    fontWeight: 'bold',
+    color: 'green'    
   },
   btn_1:{
     radius: 12,
