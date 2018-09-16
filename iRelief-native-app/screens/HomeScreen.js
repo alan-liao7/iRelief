@@ -60,35 +60,41 @@ export default class HomeScreen extends React.Component {
     await Expo.Font.loadAsync({
       Raleway: require("../assets/Raleway-Regular.ttf")
     });
-    this.setState({ fontLoaded: true });
+    this.setState({
+      fontLoaded: true
+    });
   }
 
   render() {
-    let font = this.state.fontLoaded ? { fontFamily: "Raleway" } : {};
+    let font = this.state.fontLoaded
+      ? {
+          fontFamily: "Raleway"
+        }
+      : {};
 
     let classesStyles = {
       content: {
-        letterSpacing: 12,
-        lineHeight: 12,
-        fontSize: 12,
         marginTop: "0%",
         marginRight: "10%",
         marginBottom: "0%",
-        marginLeft: "10%",
-        color: "black"
+        marginLeft: "10%"
       },
       Heading: {
-        borderBottomColor: "#d04032",
-        borderBottomWidth: 2,
         textAlign: "center",
         padding: 2,
-        fontSize: 36,
+        fontSize: 36
       },
       SubHeading: {
         fontWeight: "600",
         fontSize: 24,
-        padding: 2,
-        borderBottomWidth: 1
+        padding: 2
+      },
+      Thumbnail: {
+        marginTop: "5%",
+        marginRight: "14%",
+        marginLeft: "14%",
+        height: "5%",
+        width: "5%"
       }
     };
 
@@ -97,15 +103,17 @@ export default class HomeScreen extends React.Component {
         source={require("../assets/bkg.jpg")}
         style={myStyle.container}
       >
-        <ScrollView style={{ flex: 1 }}>
+        <ScrollView
+          style={{
+            flex: 1
+          }}
+        >
           <HTML
             html={htmlContent}
             imagesMaxWidth={Dimensions.get("window").width}
             classesStyles={classesStyles}
             tagStyles={classesStyles}
           />
-
-          <Text style={font} Hey there fucker />
         </ScrollView>
       </ImageBackground>
     );

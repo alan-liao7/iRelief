@@ -21,6 +21,7 @@
   "dependencies": {
     "algoliasearch": "^3.30.0",
     "axios": "^0.18.0",
+    "css-to-react-native": "^2.2.1",
     "exp": "^49.2.2",
     "expo": "^25.0.0",
     "firebase": "^4.13.1",

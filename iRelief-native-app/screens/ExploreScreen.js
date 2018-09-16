@@ -131,7 +131,6 @@ export default class ExploreScreen extends React.Component {
                     avatar={{
                       uri: "data:image/jpg;base64," + item.imgData
                     }}
-                    backgroundColor="transparent"
                   />
                 </TouchableOpacity>
               )}

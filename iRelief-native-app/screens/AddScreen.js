@@ -160,7 +160,14 @@ export default class AddScreen extends React.Component {
               padding: 8,
               flex: 1,
               width: 200,
-              height: 100
+              height: 100,
+              borderColor: "gray"
+            }}
+            textStyle={{
+              fontFamily: "Raleway"
+            }}
+            itemTextStyle={{
+              fontFamily: "Raleway"
             }}
             style={{
               width: 320,
@@ -184,8 +191,7 @@ export default class AddScreen extends React.Component {
               onPress={this._pickImage}
             >
               <Text style={styles.submitButtonText}>
-                {" "}
-                Choose an Image For The Item{" "}
+                Choose an Image For The Item
               </Text>
             </TouchableOpacity>
           }
@@ -206,7 +212,15 @@ export default class AddScreen extends React.Component {
               this.onPressButton();
             }}
           >
-            <Text style={styles.submitButtonText}> Donate Item </Text>
+            <ImageBackground
+              source={require("../assets/buttonBack.jpg")}
+              style={{
+                
+                margin: 0
+              }}
+            >
+              <Text style={styles.submitButtonText}> Donate Item </Text>
+            </ImageBackground>
           </TouchableOpacity>
         </View>
 
@@ -259,32 +273,22 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: "transparent"
   },
-  preview: {
-    flex: 1,
-    justifyContent: "flex-end",
-    alignItems: "center"
-  },
-  capture: {
-    flex: 0,
-    backgroundColor: "#fff",
-    borderRadius: 5,
-    padding: 15,
-    paddingHorizontal: 20,
-    alignSelf: "center",
-    margin: 20
-  },
   input: {
+    fontFamily: "Raleway",
     margin: 15,
     height: 40,
     padding: 8,
     borderColor: "gray",
+    borderRadius: 3,
     color: "rgba(0,0,0,.8)",
     backgroundColor: "rgba(10,10,10,.1)",
     borderWidth: 1
   },
   multilineinput: {
+    fontFamily: "Raleway",
     margin: 15,
     height: 60,
+    borderRadius: 3,
     padding: 8,
     borderColor: "gray",
     color: "rgba(0,0,0,.8)",
@@ -293,6 +297,7 @@ const styles = StyleSheet.create({
   },
   submitButton: {
     borderColor: "gray",
+    borderRadius: 3,
     borderWidth: 1,
     backgroundColor: "rgba(10,10,10,.3)",
     padding: 10,
@@ -303,10 +308,15 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     padding: 10,
     fontSize: 22,
-    textAlign: "center"
+    textAlign: "center",
+    fontWeight: "600",
+    fontFamily: "Raleway"
   },
   submitButtonText: {
     color: "white",
-    textAlign: "center"
+    textAlign: "center",
+    width: "100%",
+    padding: "auto",
+    fontFamily: "Raleway"
   }
 });

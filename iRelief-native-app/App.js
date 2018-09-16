@@ -72,16 +72,16 @@ var MainNav = TabNavigator(
       inactiveBackgroundColor: "white",
       inactiveTintColor: "black",
       indicatorStyle: {
-        backgroundColor: "green"
+        backgroundColor: "#d9d9d9"
       },
       style: {
         backgroundColor: "white",
-        height: 50
+        height: 60
       },
       iconStyle: {
         width: 45,
         height: 35,
-        margin: 0,
+        marginTop: 10,
         padding: 0
       },
       showLabel: false,

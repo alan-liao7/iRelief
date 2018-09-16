@@ -12,7 +12,7 @@ var options = {
   // Optional depending on the providers
   httpAdapter: 'https', // Default
   apiKey: 'AIzaSyB-Sd_InBeYptAPAv2NZc4rVl8CcxHrNuA', // for Mapquest, OpenCage, Google Premier
-  formatter: null         // 'gpx', 'string', ...
+  formatter: null // 'gpx', 'string', ...
 };
 
 //geocoder.use(options);
@@ -29,7 +29,9 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 //app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -38,28 +40,28 @@ app.use('/', routes);
 var latitude = 39.32761461649892;
 var longitude = -76.62223031968674;
 
-app.post('/sos', function(req,res){
-	console.log('POST /sos');
-	console.log(req.body);
-	latitude = req.body.latitude;
-	longitude = req.body.longitude;
-	geocoder.reverseGeocode(latitude, longitude, function ( err, data ) {
-	  if (err) {
-	    console.log(err);
-	  } else {
-	    console.log(data);
-	  }
+app.post('/sos', function (req, res) {
+  console.log('POST /sos');
+  console.log(req.body);
+  latitude = req.body.latitude;
+  longitude = req.body.longitude;
+  geocoder.reverseGeocode(latitude, longitude, function (err, data) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(data);
+    }
 
-	});
-	//console.log('Latitude: ' + req.body.latitude + '\nLongitude: ' + req.body.longitude);
-	res.set('Content-Type', 'application/json');
-	res.send(`You sent: ${req.body.latitude} to Express`);
+  });
+  //console.log('Latitude: ' + req.body.latitude + '\nLongitude: ' + req.body.longitude);
+  res.set('Content-Type', 'application/json');
+  res.send(`You sent: ${req.body.latitude} to Express`);
 });
 
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -70,7 +72,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
+  app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -81,7 +83,7 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
@@ -89,5 +91,10 @@ app.use(function(err, req, res, next) {
   });
 });
 
+
+const PORT = 3000
+app.listen(PORT, () => {
+  console.log(`Listing on port ${PORT}.`)
+})
 
 module.exports = app;
